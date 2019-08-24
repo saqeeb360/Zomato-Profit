@@ -1,5 +1,4 @@
 flask
 numpy
-pickle
 gunicorn
 xgboost
