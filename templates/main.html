@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<style>
+form { 
+margin: auto;
+width:35%;
+ }
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+.f{
+	border: double;
+}
+.d{
+	margin: auto;
+	text-align: center;
+}
+
+</style>
+<head>
+	<title>Zomato Profit in a city</title>
+</head>
+<body>
+	<div class='d'>
+	<h1>Profit monitoring system.</h1>
+	<p>Predict the future profit for setting up a new outlet in the city.</p>
+	</div>
+	<form action="{{url_for('main')}}" method="POST">
+		<fieldset>
+			<legend>Input values</legend>
+			<br>
+			Population of the city : <input name="popu" type="number" step="0.01" required>
+			<br>
+			<input type="submit">
+		</fieldset>
+	</form>
+	<br>
+	<div class="result" align="center">
+		{% if result %}
+			{% for variable, value in original_input.items() %}
+            	<b>{{ variable }}</b> : {{ value[0][0] }} millions
+            {% endfor %}
+            <br>
+            <br>
+            Profit percentage : 
+            <p class="f">{{'%.2f' % result[0]}} %
+            </p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
